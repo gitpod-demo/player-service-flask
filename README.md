@@ -20,7 +20,7 @@ python3 -m venv <path to virtual env>
 4. Install Project dependencies
 
 ```bash
-    pip install -r frf/requirements.txt
+    pip install -r requirements.txt
 ```
 
 5. Run application
