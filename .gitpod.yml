@@ -6,11 +6,6 @@ tasks:
       pip install -r requirements.txt
     command: |
       source venv/bin/activate
-  - name: ollama-setup-tinyllma
-    before: |
-      docker pull ollama/ollama
-      docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
-    init: docker exec -it ollama ollama run tinyllama
 
 ports:
   - port: 5000
