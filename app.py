@@ -1,3 +1,4 @@
+import ollama
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -22,6 +23,18 @@ def get_player(player_id):
 		return jsonify(player[0])
 	else:
 		return jsonify({'message': 'player not found'}), 404
+
+# Talk to Ollama test route
+@app.route('/chat/ollama', methods=['GET'])
+def chat_model():
+	stream = ollama.chat(
+    	model='tinyllama',
+    	messages=[{'role': 'user', 'content': 'Why is the sky blue?'}],
+    	stream=True,
+	)
+	for chunk in stream:
+  		print(chunk['message']['content'], end='', flush=True)
+	return "TEST"
 
 if __name__ == '__main__':
 	app.run(debug=True)
